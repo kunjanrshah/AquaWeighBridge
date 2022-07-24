@@ -63,6 +63,8 @@ void callback(char* topic, byte* payload, unsigned int length) {
     str=str+(char)payload[i];
   }
   Serial.println(str);
+  payload=0;
+  str="";
 }
  
 void loop() {
@@ -87,12 +89,13 @@ void loop() {
             counter=0;
           } else {
             counter++;
+      
             digitalWrite(ledConnected, LOW);
 //            Serial.print("Counter : ");
 //            Serial.println(counter);
             delay(3000);
             if(counter>100){
-              counter=0;
+                counter=0;
 //              Serial.print("going to reset");
 //              Serial.println(); 
               exit(0);
